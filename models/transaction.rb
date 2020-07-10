@@ -52,11 +52,12 @@ class Transaction
     end
 
     def self.total()
-        sql = "SELECT transactions.amount FROM transactions;"
-        results = SqlRunner.run(sql)
-        amounts_hash = results.map { |amount| amount } 
-        return amounts_hash.each { |k, v| amounts_hash[v] = v.to_f } 
-        # all_amounts = amounts_hash.map { |amount| amount.values } 
+        all_transactions = Transaction.all()
+        total = 0
+        for transaction in all_transactions
+          total += transaction.amount
+        end
+        return total.round(2)
     end
 
     def update()

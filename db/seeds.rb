@@ -7,6 +7,7 @@ Transaction.delete_all()
 Merchant.delete_all()
 Category.delete_all()
 
+# MERCHANTS
 merchant1 = Merchant.new({
     "name" => "Tesco"
 })
@@ -17,11 +18,28 @@ merchant2 = Merchant.new({
 })
 merchant2.save()
 
+merchant3 = Merchant.new({
+    "name" => "Tele-Taxi"
+})
+merchant3.save()
+
+# CATEGORIES
 category1 = Category.new({
     "name" => "Groceries"
 })
 category1.save()
 
+category2 = Category.new({
+    "name" => "Transport"
+})
+category2.save()
+
+category3 = Category.new({
+    "name" => "Clothing"
+})
+category3.save()
+
+# TRANSACTIONS
 transaction1 = Transaction.new({
     "merchant_id" => merchant1.id,
     "category_id" => category1.id,
@@ -29,20 +47,22 @@ transaction1 = Transaction.new({
 })
 transaction1.save()
 
-merchant1.name = "Asda"
-merchant1.update()
+transaction2 = Transaction.new({
+    "merchant_id" => merchant3.id,
+    "category_id" => category2.id,
+    "amount" => 25.00
+})
+transaction2.save()
 
-category1.name = "Transportation"
-category1.update()
+transaction3 = Transaction.new({
+    "merchant_id" => merchant2.id,
+    "category_id" => category3.id,
+    "amount" => 5.43
+})
+transaction3.save()
 
-transaction1.merchant_id = merchant2.id
-transaction1.update()
-
+# VARIABLES
 all_transactions = Transaction.all()
-
-for transaction in all_transactions
-    p transaction.merchant.name
-end
 
 binding.pry
 nil
