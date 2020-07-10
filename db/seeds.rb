@@ -1,5 +1,6 @@
 require_relative("../models/merchant")
 require_relative("../models/category")
+require_relative("../models/transaction")
 require("pry-byebug")
 
 merchant1 = Merchant.new({
@@ -11,6 +12,13 @@ category1 = Category.new({
     "name" => "Groceries"
 })
 category1.save()
+
+transaction1 = Transaction.new({
+    "merchant_id" => merchant1.id,
+    "category_id" => category1.id,
+    "amount" => 12.35
+})
+transaction1.save()
 
 merchant1.name = "Asda"
 merchant1.update()

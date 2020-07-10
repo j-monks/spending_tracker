@@ -9,11 +9,11 @@ class Transaction
         @id = options["id"].to_i if options["id"]
         @merchant_id = options["merchant_id"].to_i
         @category_id = options["category_id"].to_i
-        @amount = options["amount"].to_i
+        @amount = options["amount"].to_f
     end
 
     def save()
-        sql = "INSERT INTO merchants
+        sql = "INSERT INTO transactions
         (
             merchant_id,
             category_id,
@@ -28,5 +28,5 @@ class Transaction
         result = SqlRunner.run(sql, values)
         @id = result.first()["id"].to_i
     end
-    
+
 end
