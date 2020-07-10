@@ -36,7 +36,9 @@ transaction1.update()
 
 all_transactions = Transaction.all()
 
-
+for transaction in all_transactions
+    p transaction.merchant.name
+end
 
 binding.pry
 nil
