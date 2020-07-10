@@ -3,6 +3,10 @@ require_relative("../models/category")
 require_relative("../models/transaction")
 require("pry-byebug")
 
+Transaction.delete_all()
+Merchant.delete_all()
+Category.delete_all()
+
 merchant1 = Merchant.new({
     "name" => "Tesco"
 })

@@ -51,6 +51,14 @@ class Transaction
         return Category.new(results.first)
     end
 
+    def self.total()
+        sql = "SELECT transactions.amount FROM transactions;"
+        results = SqlRunner.run(sql)
+        amounts_hash = results.map { |amount| amount } 
+        return amounts_hash.each { |k, v| amounts_hash[v] = v.to_f } 
+        # all_amounts = amounts_hash.map { |amount| amount.values } 
+    end
+
     def update()
         sql = "UPDATE transactions
         SET
@@ -65,6 +73,11 @@ class Transaction
         WHERE id = $4"
         values = [@merchant_id, @category_id, @amount, @id]
         SqlRunner.run(sql, values)
+    end
+
+    def self.delete_all()
+        sql = "DELETE FROM transactions"
+        SqlRunner.run(sql)
     end
 
 end
