@@ -15,6 +15,9 @@ category1.save()
 merchant1.name = "Asda"
 merchant1.update()
 
+category1.name = "Transportation"
+category1.update()
+
 
 binding.pry
 nil
