@@ -29,6 +29,12 @@ class Transaction
         @id = result.first()["id"].to_i
     end
 
+    def self.all()
+        sql = "SELECT * FROM transactions"
+        results = SqlRunner.run(sql)
+        return results.map { |transaction| Transaction.new(transaction) }
+    end
+
     def update()
         sql = "UPDATE transactions
         SET

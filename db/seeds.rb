@@ -34,5 +34,7 @@ category1.update()
 transaction1.merchant_id = merchant2.id
 transaction1.update()
 
+all_transactions = Transaction.all()
+
 binding.pry
 nil
