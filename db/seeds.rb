@@ -36,5 +36,7 @@ transaction1.update()
 
 all_transactions = Transaction.all()
 
+
+
 binding.pry
 nil

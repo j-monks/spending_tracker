@@ -35,6 +35,14 @@ class Transaction
         return results.map { |transaction| Transaction.new(transaction) }
     end
 
+    def merchant()
+        sql = "SELECT * FROM merchants
+        WHERE id = $1"
+        values = [@merchant_id]
+        results = SqlRunner.run(sql, values)
+        return Merchant.new(results.first)
+    end
+    
     def update()
         sql = "UPDATE transactions
         SET
