@@ -8,6 +8,11 @@ merchant1 = Merchant.new({
 })
 merchant1.save()
 
+merchant2 = Merchant.new({
+    "name" => "Amazon"
+})
+merchant2.save()
+
 category1 = Category.new({
     "name" => "Groceries"
 })
@@ -26,6 +31,8 @@ merchant1.update()
 category1.name = "Transportation"
 category1.update()
 
+transaction1.merchant_id = merchant2.id
+transaction1.update()
 
 binding.pry
 nil
