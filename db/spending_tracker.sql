@@ -1,4 +1,5 @@
 DROP TABLE merchants;
+DROP TABLE categories;
 
 CREATE TABLE merchants
 (
