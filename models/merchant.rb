@@ -1,16 +1,17 @@
-require_relative('../db/sql_runner')
+require_relative("../db/sql_runner")
 
 class Merchant
-
-    attr_reader :id, :name
+    
+    attr_accessor :name
+    attr_reader :id
 
     def initialize(options)
-        @id = options['id'].to_i if options['id']
-        @name = options['name']
+        @id = options["id"].to_i if options["id"]
+        @name = options["name"]
     end
 
     def save()
-        sql = 'INSERT INTO merchants
+        sql = "INSERT INTO merchants
         (
             name
         )
@@ -18,10 +19,19 @@ class Merchant
         (
             $1
         )
-        RETURNING id'
+        RETURNING id"
         values = [@name]
         result = SqlRunner.run(sql, values)
-        @id = result.first()['id'].to_i
+        @id = result.first()["id"].to_i
     end
+
+    def update()
+        sql = "UPDATE merchants
+        SET
+        name = $1
+        WHERE id = $2"
+        values = [@name, @id]
+        SqlRunner.run(sql, values)
+      end
 
 end
