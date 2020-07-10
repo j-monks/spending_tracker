@@ -42,7 +42,15 @@ class Transaction
         results = SqlRunner.run(sql, values)
         return Merchant.new(results.first)
     end
-    
+
+    def category()
+        sql = "SELECT * FROM categories
+        WHERE id = $1"
+        values = [@category_id]
+        results = SqlRunner.run(sql, values)
+        return Category.new(results.first)
+    end
+
     def update()
         sql = "UPDATE transactions
         SET
