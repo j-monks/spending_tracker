@@ -1,0 +1,9 @@
+<h1>Your Category Tags!</h1>
+
+<ul>
+<% for category in @categories %>
+    <li>
+        <p>Tag: <%= category.name %></p> 
+    </li>
+<% end %>
+</ul>
