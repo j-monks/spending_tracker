@@ -12,12 +12,14 @@ get "/new-category" do
     erb(:"categories/new")
 end
 
-get "/categories/:id/delete"
-    Category.soft_delete(params[:id])
-    redirect to "/categories"
-end
-
 post "/categories" do
     Category.new(params).save()
     redirect to "/categories"
 end
+
+post "/categories/:id/delete" do 
+    Category.soft_delete(params[:id])
+    redirect to "/categories"
+end
+
+

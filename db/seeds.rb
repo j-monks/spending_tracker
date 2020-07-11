@@ -28,20 +28,17 @@ merchant3.save()
 
 # CATEGORIES
 category1 = Category.new({
-    "name" => "Groceries",
-    "isdeleted" => 0
+    "name" => "Groceries"
 })
 category1.save()
 
 category2 = Category.new({
-    "name" => "Transport",
-    "isdeleted" => 0
+    "name" => "Transport"
 })
 category2.save()
 
 category3 = Category.new({
-    "name" => "Clothing",
-    "isdeleted" => 0
+    "name" => "Clothing"
 })
 category3.save()
 
@@ -70,8 +67,8 @@ transaction3.save()
 # VARIABLES
 # all_transactions = Transaction.all()
 
-# soft_delete_cat1 = category1.isdeleted = 1
-# category1.update()
+soft_delete_cat1 = category1.isdeleted = 1
+category1.update()
 
 # soft_delete_cmerch1 = merchant1.isdeleted = 1
 # merchant1.update()
