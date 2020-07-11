@@ -5,13 +5,15 @@ DROP TABLE categories;
 CREATE TABLE merchants
 (
     id SERIAL primary key,
-    name VARCHAR(255) not null
+    name VARCHAR(255) not null,
+    isdeleted INT 
 );
 
 CREATE TABLE categories
 (
     id SERIAL primary key,
-    name VARCHAR(255) not null
+    name VARCHAR(255) not null,
+    isdeleted INT 
 );
 
 CREATE TABLE transactions

@@ -9,33 +9,39 @@ Category.delete_all()
 
 # MERCHANTS
 merchant1 = Merchant.new({
-    "name" => "Tesco"
+    "name" => "Tesco",
+    "isdeleted" => 0
 })
 merchant1.save()
 
 merchant2 = Merchant.new({
-    "name" => "Amazon"
+    "name" => "Amazon",
+    "isdeleted" => 0
 })
 merchant2.save()
 
 merchant3 = Merchant.new({
-    "name" => "Tele-Taxi"
+    "name" => "Tele-Taxi",
+    "isdeleted" => 0
 })
 merchant3.save()
 
 # CATEGORIES
 category1 = Category.new({
-    "name" => "Groceries"
+    "name" => "Groceries",
+    "isdeleted" => 0
 })
 category1.save()
 
 category2 = Category.new({
-    "name" => "Transport"
+    "name" => "Transport",
+    "isdeleted" => 0
 })
 category2.save()
 
 category3 = Category.new({
-    "name" => "Clothing"
+    "name" => "Clothing",
+    "isdeleted" => 0
 })
 category3.save()
 
@@ -63,6 +69,12 @@ transaction3.save()
 
 # VARIABLES
 all_transactions = Transaction.all()
+
+soft_delete_cat1 = category1.isdeleted = 1
+category1.update()
+
+soft_delete_cmerch1 = merchant1.isdeleted = 1
+merchant1.update()
 
 binding.pry
 nil
