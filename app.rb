@@ -5,6 +5,7 @@ require_relative("models/merchant")
 require_relative("models/category")
 require_relative("controllers/merchant_controller")
 require_relative("controllers/category_controller")
+require_relative("controllers/transaction_controller")
 also_reload("../models/*")
 
 get "/" do
@@ -13,3 +14,7 @@ get "/" do
   erb(:index)
 end
 
+post "/" do
+    Transaction.new(params).save()
+    redirect to "/"
+end
