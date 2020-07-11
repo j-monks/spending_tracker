@@ -4,6 +4,9 @@
 <% for category in @categories %>
     <li>
         <p>Tag: <%= category.name %></p> 
+        <form action="/category/<%= category.id %>/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+        </form>
     </li>
 <% end %>
 </ul>

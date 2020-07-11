@@ -27,7 +27,8 @@ class Category
     end
 
     def self.all()
-        sql = "SELECT * FROM categories"
+        sql = "SELECT * FROM categories
+        WHERE isdeleted = 0"
         results = SqlRunner.run(sql)
         return results.map { |category| Category.new(category) }
     end
@@ -44,6 +45,18 @@ class Category
         WHERE id = $3"
         values = [@name, @isdeleted, @id]
         SqlRunner.run(sql, values)
+      end
+      
+      def self.find(id)
+        sql = "SELECT * FROM categories
+        WHERE id = $1"
+        values = [id]
+        results = SqlRunner.run(sql, values)
+        return Category.new(results.first)
+      end
+
+      def self.soft_delete(id)
+       
       end
 
       def self.delete_all()

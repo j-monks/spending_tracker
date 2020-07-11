@@ -68,13 +68,15 @@ transaction3 = Transaction.new({
 transaction3.save()
 
 # VARIABLES
-all_transactions = Transaction.all()
+# all_transactions = Transaction.all()
 
-soft_delete_cat1 = category1.isdeleted = 1
-category1.update()
+# soft_delete_cat1 = category1.isdeleted = 1
+# category1.update()
 
-soft_delete_cmerch1 = merchant1.isdeleted = 1
-merchant1.update()
+# soft_delete_cmerch1 = merchant1.isdeleted = 1
+# merchant1.update()
+all_categories = Category.all()
+
 
 binding.pry
 nil
