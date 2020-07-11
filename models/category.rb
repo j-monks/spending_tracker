@@ -25,6 +25,12 @@ class Category
         @id = result.first()["id"].to_i
     end
 
+    def self.all()
+        sql = "SELECT * FROM categories"
+        results = SqlRunner.run(sql)
+        return results.map { |category| Category.new(category) }
+    end
+
     def update()
         sql = "UPDATE categories
         SET

@@ -25,6 +25,12 @@ class Merchant
         @id = result.first()["id"].to_i
     end
 
+    def self.all()
+        sql = "SELECT * FROM merchants"
+        results = SqlRunner.run(sql)
+        return results.map { |merchant| Merchant.new(merchant) }
+    end
+     
     def update()
         sql = "UPDATE merchants
         SET

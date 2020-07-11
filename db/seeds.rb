@@ -63,6 +63,8 @@ transaction3.save()
 
 # VARIABLES
 all_transactions = Transaction.all()
+all_merchants = Merchant.all()
+all_categories = Category.all()
 
 binding.pry
 nil
