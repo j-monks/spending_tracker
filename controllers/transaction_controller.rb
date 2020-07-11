@@ -9,5 +9,9 @@ get "/new-transaction" do
     erb(:"transactions/new")
 end
 
+post "/:id/delete" do
+    Transaction.delete(params[:id])
+    redirect to "/"
+end
 
   

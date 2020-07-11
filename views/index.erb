@@ -5,6 +5,9 @@
 <% for transaction in @transactions %>
     <li>
         <p><%= transaction.merchant.name %>  <%= transaction.category.name %>  <%= transaction.amount %></p>
+        <form action="/<%= transaction.id %>/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+        </form>
     </li>
 <% end %>
 </ul>
