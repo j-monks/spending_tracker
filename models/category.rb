@@ -56,7 +56,9 @@ class Category
       end
 
       def self.soft_delete(id)
-       
+        category = Category.find(id)
+        category.isdeleted = 1
+        category.update()
       end
 
       def self.delete_all()
