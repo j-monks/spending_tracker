@@ -1,2 +1,9 @@
 <h1>Your Merchants!</h1>
 
+<ul>
+<% for merchant in @merchants %>
+    <li>
+        <p>Name: <%= merchant.name %></p> 
+    </li>
+<% end %>
+</ul>
