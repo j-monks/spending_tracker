@@ -8,7 +8,7 @@ class Merchant
     def initialize(options)
         @id = options["id"].to_i if options["id"]
         @name = options["name"]
-        @isdeleted = options["isdeleted"]
+        @isdeleted = 0
     end
 
     def save()
@@ -44,6 +44,20 @@ class Merchant
         WHERE id = $3"
         values = [@name, @isdeleted, @id]
         SqlRunner.run(sql, values)
+      end
+
+      def self.find(id)
+        sql = "SELECT * FROM merchants
+        WHERE id = $1"
+        values = [id]
+        results = SqlRunner.run(sql, values)
+        return Merchant.new(results.first)
+      end
+
+      def self.soft_delete(id)
+        merchant = Merchant.find(id)
+        merchant.isdeleted = 1
+        merchant.update()
       end
 
       def self.delete_all()

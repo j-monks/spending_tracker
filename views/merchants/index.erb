@@ -3,6 +3,9 @@
 <% for merchant in @merchants %>
     <li>
         <p>Name: <%= merchant.name %></p> 
+        <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+        <input class="btn btn--danger" type="submit" value="delete" />
+        </form>
     </li>
 <% end %>
 </ul>

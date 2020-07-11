@@ -16,3 +16,8 @@ post "/merchants" do
     Merchant.new(params).save()
     redirect to "/merchants"
 end
+
+post "/merchants/:id/delete" do 
+    Merchant.soft_delete(params[:id])
+    redirect to "/merchants"
+end
