@@ -7,7 +7,7 @@ CREATE TABLE merchants
     id SERIAL primary key,
     name VARCHAR(255) not null,
     isdeleted INT,
-    isdeactivated INT 
+    isactive INT 
 );
 
 CREATE TABLE categories

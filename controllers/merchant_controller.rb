@@ -38,3 +38,8 @@ post "/merchants/:id/deactivate" do
     Merchant.deactivate(params[:id])
     redirect to "/merchants"
 end
+
+post "/merchants/:id/reactivate" do 
+    Merchant.reactivate(params[:id])
+    redirect to "/merchants"
+end

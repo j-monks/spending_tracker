@@ -9,16 +9,16 @@
         <form action="/merchants/<%= merchant.id %>/delete" method="POST">
         <input class="btn btn--danger" type="submit" value="delete" />
         </form>
-        <% if merchant.isdeactivated == "0" %>
+        <% if merchant.isactive == "1" %>
         <form action="/merchants/<%= merchant.id %>/deactivate" method="POST">
         <input class="btn btn--danger" type="submit" value="deactivate"/></form>
         <% else %>
-        <form action="/merchants/<%= merchant.id %>/deactivate" method="POST">
+        <form action="/merchants/<%= merchant.id %>/reactivate" method="POST">
         <input class="btn btn--danger" type="submit" value="reactivate"/></form>
         <% end %>
     </li>
-        <%= merchant.isdeactivated %>
-        <% if merchant.isdeactivated == "1" %>
+        <%= merchant.isactive %>
+        <% if merchant.isactive == "1" %>
         <li><p>hello</p></li>
         <% else %>
         <li><p>cya</p></li>

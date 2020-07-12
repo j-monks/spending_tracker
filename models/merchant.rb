@@ -2,27 +2,27 @@ require_relative("../db/sql_runner")
 
 class Merchant
     
-    attr_accessor :name, :isdeleted, :isdeactivated
+    attr_accessor :name, :isdeleted, :isactive
     attr_reader :id
 
     def initialize(options)
         @id = options["id"].to_i if options["id"]
         @name = options["name"]
         @isdeleted = 0
-        @isdeactivated = options["isdeactivated"]
+        @isactive = options["isactive"]
     end
 
     def save()
         sql = "INSERT INTO merchants
         (
-            name, isdeleted, isdeactivated
+            name, isdeleted, isactive
         )
         VALUES
         (
             $1, $2, $3
         )
         RETURNING id"
-        values = [@name, @isdeleted, @isdeactivated = 0]
+        values = [@name, @isdeleted, @isactive = 1]
         result = SqlRunner.run(sql, values)
         @id = result.first()["id"].to_i
     end
@@ -40,13 +40,13 @@ class Merchant
         sql = "UPDATE merchants
         SET
         (
-            name, isdeleted, isdeactivated
+            name, isdeleted, isactive
         ) = 
         (
             $1, $2, $3
         )
         WHERE id = $4"
-        values = [@name, @isdeleted, @isdeactivated, @id]
+        values = [@name, @isdeleted, @isactive, @id]
         SqlRunner.run(sql, values)
       end
 
@@ -66,18 +66,15 @@ class Merchant
 
       def self.deactivate(id)
         merchant = Merchant.find(id)
-        merchant.isdeactivated = 1
+        merchant.isactive = 0
         merchant.update()
       end
 
-    #   def self.is_deactivated?(id)
-    #     merchant = Merchant.find(id)
-    #     if merchant.isdeactivated == 1 
-    #         return true
-    #     else 
-    #         return false
-    #     end
-    #   end
+      def self.reactivate(id)
+        merchant = Merchant.find(id)
+        merchant.isactive = 1
+        merchant.update()
+      end
 
       def self.delete_all()
         sql = "DELETE FROM merchants"
