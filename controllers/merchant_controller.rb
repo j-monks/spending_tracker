@@ -17,7 +17,19 @@ post "/merchants" do
     redirect to "/merchants"
 end
 
+post "/merchants/:id" do
+    merchant = Merchant.find(params[:id])
+    merchant.name = params[:name]
+    merchant.update()
+    redirect to "/merchants"
+end
+
 post "/merchants/:id/delete" do 
     Merchant.soft_delete(params[:id])
     redirect to "/merchants"
+end
+
+post "/merchants/:id/edit" do 
+    @merchant = Merchant.find(params[:id])
+    erb(:"merchants/edit")
 end
