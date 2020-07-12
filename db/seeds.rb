@@ -10,7 +10,8 @@ Category.delete_all()
 # MERCHANTS
 merchant1 = Merchant.new({
     "name" => "Tesco",
-    "isdeleted" => 0
+    "isdeleted" => 0,
+    "isdeactivated" => 1
 })
 merchant1.save()
 
@@ -67,13 +68,20 @@ transaction3.save()
 # VARIABLES
 # all_transactions = Transaction.all()
 
-soft_delete_cat1 = category1.isdeleted = 1
-category1.update()
+# soft_delete_cat1 = category1.isdeleted = 1
+# category1.update()
 
 # soft_delete_cmerch1 = merchant1.isdeleted = 1
 # merchant1.update()
-all_categories = Category.all()
+# all_categories = Category.all()
 
+# de = Merchant.is_deactivated?(merchant1.id)
+# merchant1.isdeactivated = 1
+# merchant1.update()
+# Merchant.deactivate(merchant1.id)
+
+# merchant1.name = "School"
+# merchant1.update()
 
 binding.pry
 nil

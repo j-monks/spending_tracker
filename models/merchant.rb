@@ -9,7 +9,7 @@ class Merchant
         @id = options["id"].to_i if options["id"]
         @name = options["name"]
         @isdeleted = 0
-        @isdeactivated = 0
+        @isdeactivated = options["isdeactivated"]
     end
 
     def save()
@@ -22,7 +22,7 @@ class Merchant
             $1, $2, $3
         )
         RETURNING id"
-        values = [@name, @isdeleted, @isdeactivated]
+        values = [@name, @isdeleted, @isdeactivated = 0]
         result = SqlRunner.run(sql, values)
         @id = result.first()["id"].to_i
     end
@@ -33,7 +33,9 @@ class Merchant
         results = SqlRunner.run(sql)
         return results.map { |merchant| Merchant.new(merchant) }
     end
-     
+    
+    # def self.is_active?
+
     def update()
         sql = "UPDATE merchants
         SET
@@ -62,9 +64,24 @@ class Merchant
         merchant.update()
       end
 
+      def self.deactivate(id)
+        merchant = Merchant.find(id)
+        merchant.isdeactivated = 1
+        merchant.update()
+      end
+
+    #   def self.is_deactivated?(id)
+    #     merchant = Merchant.find(id)
+    #     if merchant.isdeactivated == 1 
+    #         return true
+    #     else 
+    #         return false
+    #     end
+    #   end
+
       def self.delete_all()
         sql = "DELETE FROM merchants"
         SqlRunner.run(sql)
-    end
+      end
 
 end

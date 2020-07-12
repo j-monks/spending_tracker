@@ -33,3 +33,8 @@ post "/merchants/:id/edit" do
     @merchant = Merchant.find(params[:id])
     erb(:"merchants/edit")
 end
+
+post "/merchants/:id/deactivate" do 
+    Merchant.deactivate(params[:id])
+    redirect to "/merchants"
+end
