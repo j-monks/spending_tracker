@@ -3,15 +3,15 @@
 <h2>Transaction Details</h2>
 <hr>
 
-<form method="POST" action="/">
+<form method="POST" action="/<%= @transaction.id %>">
   <div class="form-wrapper">
 
     <label for="transaction-merchant">
     Select a Merchant:
         <select name="merchant_id">
-        <option value="<%= @previous_choice.id %>"><%= @previous_choice.name %></option>
+        <option value="<%= @previous_merchant.id %>"><%= @previous_merchant.name %></option>
         <% for merchant in @merchants %>
-            <% if merchant.name != @previous_choice.name %>
+            <% if merchant.name != @previous_merchant.name %>
             <option value="<%= merchant.id %>"><%= merchant.name %></option>
             <% end %>
         <% end %>
@@ -21,15 +21,18 @@
     <label for="transaction-category">
     Select a Category:
         <select name="category_id">
+        <option value="<%= @previous_category.id %>"><%= @previous_category.name %></option>
         <% for category in @categories %>
+            <% if category.name != @previous_category.name %>
             <option value="<%= category.id %>"><%= category.name %></option>
+            <% end %>
         <% end %>
         </select>
     </label>
 
     <div class="form-el">
       <label for="transaction-amount">Amount:</label>
-      <input type="number" step="0.01" name="amount" id="amount"/>
+      <input type="number" value="<%= @transaction.amount %>" step="0.01" name="amount" id="amount"/>
     </div>
     
   <input type='submit' value="Submit Changes">
