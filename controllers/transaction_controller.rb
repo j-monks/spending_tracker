@@ -24,6 +24,8 @@ post "/:id/delete" do
 end
 
 post "/:id/edit" do
+    @merchants = Merchant.all()
+    @categories = Category.all()
     transaction = Transaction.find(params[:id])
     erb(:"/transactions/edit")
 end

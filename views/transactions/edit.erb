@@ -1,15 +1,34 @@
-<h1>Edit Merchant</h1>
+<h1>Edit Transaction</h1>
 
-<h2>Merchant Details</h2>
+<h2>Transaction Details</h2>
 <hr>
 
-<form method="POST" action="/merchants/<%= @merchant.id %>">
+<form method="POST" action="/">
   <div class="form-wrapper">
-    
+
+    <label for="transaction-merchant">
+    Select a Merchant:
+        <select name="merchant_id">
+        <% for merchant in @merchants %>
+            <option value="<%= merchant.id %>"><%= merchant.name %></option>
+        <% end %>
+        </select>
+    </label>
+  
+    <label for="transaction-category">
+    Select a Category:
+        <select name="category_id">
+        <% for category in @categories %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+        <% end %>
+        </select>
+    </label>
+
     <div class="form-el">
-      <label for="merchant-name">Name:</label>
-      <input type="text" name="name" id="name"/>
+      <label for="transaction-amount">Amount:</label>
+      <input type="number" step="0.01" name="amount" id="amount"/>
     </div>
     
   <input type='submit' value="Submit Changes">
 </form>
+
