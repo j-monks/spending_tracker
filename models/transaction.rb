@@ -35,6 +35,14 @@ class Transaction
         return results.map { |transaction| Transaction.new(transaction) }
     end
 
+    def self.find(id)
+        sql = "SELECT * FROM transactions
+        WHERE id = $1"
+        values = [id]
+        results = SqlRunner.run(sql, values)
+        return Transaction.new(results.first)
+      end
+
     def merchant()
         sql = "SELECT * FROM merchants
         WHERE id = $1"
