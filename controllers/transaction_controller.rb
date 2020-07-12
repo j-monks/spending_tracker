@@ -26,7 +26,8 @@ end
 post "/:id/edit" do
     @merchants = Merchant.all()
     @categories = Category.all()
-    transaction = Transaction.find(params[:id])
+    @transaction = Transaction.find(params[:id])
+    @previous_choice = Merchant.find(@transaction.merchant_id)
     erb(:"/transactions/edit")
 end
 

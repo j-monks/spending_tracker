@@ -9,8 +9,11 @@
     <label for="transaction-merchant">
     Select a Merchant:
         <select name="merchant_id">
+        <option value="<%= @previous_choice.id %>"><%= @previous_choice.name %></option>
         <% for merchant in @merchants %>
+            <% if merchant.name != @previous_choice.name %>
             <option value="<%= merchant.id %>"><%= merchant.name %></option>
+            <% end %>
         <% end %>
         </select>
     </label>
