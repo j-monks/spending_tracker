@@ -11,9 +11,9 @@
         <select name="merchant_id">
         <% for merchant in @merchants %>
             <% if merchant.isactive == "1" %>
-            <option value="<%= merchant.id %>"><%= merchant.name %></option>
+                <option value="<%= merchant.id %>"><%= merchant.name %></option>
             <% else %>
-            <option value="<%= merchant.id %>" disabled><%= merchant.name %></option>
+                <option value="<%= merchant.id %>" disabled><%= merchant.name %></option>
             <% end %>
         <% end %>
         </select>
@@ -23,7 +23,11 @@
     Select a Category:
         <select name="category_id">
         <% for category in @categories %>
-            <option value="<%= category.id %>"><%= category.name %></option>
+            <% if category.isactive == "1" %>
+                <option value="<%= category.id %>"><%= category.name %></option>
+            <% else %>
+                <option value="<%= category.id %>" disabled><%= category.name %></option>
+            <% end %>
         <% end %>
         </select>
     </label>

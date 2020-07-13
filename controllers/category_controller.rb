@@ -34,3 +34,13 @@ post "/categories/:id/edit" do
     erb(:"categories/edit")
 end
 
+post "/categories/:id/deactivate" do 
+    Category.deactivate(params[:id])
+    redirect to "/categories"
+end
+
+post "/categories/:id/reactivate" do 
+    Category.reactivate(params[:id])
+    redirect to "/categories"
+end
+

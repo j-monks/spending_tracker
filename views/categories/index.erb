@@ -3,13 +3,26 @@
 <ul>
 <% for category in @categories %>
     <li>
-        <p>Tag: <%= category.name %></p> 
+        <p
+        <% if category.isactive == "1" %> 
+        class=""
+        <% else %>
+        class="grayout"
+        <% end %>
+        >Tag: <%= category.name %></p> 
         <form action="/categories/<%= category.id %>/edit" method="POST">
         <input class="btn btn--danger" type="submit" value="edit" />
         </form> 
         <form action="/categories/<%= category.id %>/delete" method="POST">
         <input class="btn btn--danger" type="submit" value="delete" />
         </form>
+        <% if category.isactive == "1" %>
+        <form action="/categories/<%= category.id %>/deactivate" method="POST">
+        <input class="btn btn--danger" type="submit" value="deactivate"/></form>
+        <% else %>
+        <form action="/categories/<%= category.id %>/reactivate" method="POST">
+        <input class="btn btn--danger" type="submit" value="reactivate"/></form>
+        <% end %>
     </li>
 <% end %>
 </ul>

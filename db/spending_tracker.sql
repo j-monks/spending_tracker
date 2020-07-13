@@ -15,7 +15,7 @@ CREATE TABLE categories
     id SERIAL primary key,
     name VARCHAR(255) not null,
     isdeleted INT,
-    isdeactivated INT
+    isactive INT
 );
 
 CREATE TABLE transactions
