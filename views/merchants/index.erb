@@ -2,7 +2,13 @@
 <ul>
 <% for merchant in @merchants %>
     <li>
-        <p>Name: <%= merchant.name %></p> 
+        <p
+        <% if merchant.isactive == "1" %> 
+        class=""
+        <% else %>
+        class="grayout"
+        <% end %>
+        >Name: <%= merchant.name %></p> 
         <form action="/merchants/<%= merchant.id %>/edit" method="POST">
         <input class="btn btn--danger" type="submit" value="edit" />
         </form> 
@@ -17,12 +23,6 @@
         <input class="btn btn--danger" type="submit" value="reactivate"/></form>
         <% end %>
     </li>
-        <%= merchant.isactive %>
-        <% if merchant.isactive == "1" %>
-        <li><p>hello</p></li>
-        <% else %>
-        <li><p>cya</p></li>
-        <% end %>
 <% end %>
 </ul>
 <button><a href="/new-merchant">Create a New Merchant?</a></button>

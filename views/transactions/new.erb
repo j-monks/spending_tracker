@@ -10,7 +10,11 @@
     Select a Merchant:
         <select name="merchant_id">
         <% for merchant in @merchants %>
+            <% if merchant.isactive == "1" %>
             <option value="<%= merchant.id %>"><%= merchant.name %></option>
+            <% else %>
+            <option value="<%= merchant.id %>" disabled><%= merchant.name %></option>
+            <% end %>
         <% end %>
         </select>
     </label>
