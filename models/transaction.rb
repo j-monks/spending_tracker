@@ -2,7 +2,7 @@ require_relative("../db/sql_runner")
 
 class Transaction
     
-    attr_accessor :merchant_id, :category_id, :amount
+    attr_accessor :merchant_id, :category_id, :amount, :ts
     attr_reader :id
 
     def initialize(options)
@@ -10,6 +10,7 @@ class Transaction
         @merchant_id = options["merchant_id"].to_i
         @category_id = options["category_id"].to_i
         @amount = options["amount"].to_f
+        @ts = options["ts"]
     end
 
     def save()
@@ -17,20 +18,23 @@ class Transaction
         (
             merchant_id,
             category_id,
-            amount
+            amount,
+            ts
         )
         VALUES
         (
-            $1, $2, $3
+            $1, $2, $3, $4
         )
         RETURNING id"
-        values = [@merchant_id, @category_id, @amount]
+        ts = Time.now.strftime("%Y-%m-%d %H:%M:%S")
+        values = [@merchant_id, @category_id, @amount, @ts = ts]
         result = SqlRunner.run(sql, values)
         @id = result.first()["id"].to_i
     end
 
     def self.all()
-        sql = "SELECT * FROM transactions"
+        sql = "SELECT * FROM transactions
+        ORDER BY ts DESC" 
         results = SqlRunner.run(sql)
         return results.map { |transaction| Transaction.new(transaction) }
     end

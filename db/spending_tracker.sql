@@ -23,5 +23,6 @@ CREATE TABLE transactions
     id SERIAL primary key,
     merchant_id INT REFERENCES merchants(id),
     category_id INT REFERENCES categories(id),
-    amount decimal(18,2)
+    amount decimal(18,2),
+    ts TIMESTAMP
 );

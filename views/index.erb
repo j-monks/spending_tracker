@@ -10,6 +10,7 @@
         </form> 
         <form action="/<%= transaction.id %>/delete" method="POST">
         <input class="btn btn--danger" type="submit" value="delete" />
+        <p><%= transaction.ts %></p>
         </form>
     </li>
 <% end %>
