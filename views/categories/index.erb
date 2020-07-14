@@ -1,29 +1,30 @@
 <h1>Your Category Tags!</h1>
-
 <ul>
-<% for category in @categories %>
-    <li>
+   <% for category in @categories %>
+   <li>
         <p
-        <% if category.isactive == "1" %> 
-        class=""
-        <% else %>
-        class="grayout"
-        <% end %>
-        >Tag: <%= category.name %></p> 
-        <form action="/categories/<%= category.id %>/edit" method="POST">
-        <input class="btn btn--danger" type="submit" value="edit" />
-        </form> 
-        <form action="/categories/<%= category.id %>/delete" method="POST">
-        <input class="btn btn--danger" type="submit" value="delete" />
-        </form>
-        <% if category.isactive == "1" %>
-        <form action="/categories/<%= category.id %>/deactivate" method="POST">
-        <input class="btn btn--danger" type="submit" value="deactivate"/></form>
-        <% else %>
-        <form action="/categories/<%= category.id %>/reactivate" method="POST">
-        <input class="btn btn--danger" type="submit" value="reactivate"/></form>
-        <% end %>
-    </li>
-<% end %>
+         <% if category.isactive == "1" %> 
+         class=""
+         <% else %>
+         class="grayout"
+         <% end %>
+         >Tag: <%= category.name %></p>
+      <form action="/categories/<%= category.id %>/edit" method="POST">
+         <input class="btn btn--danger" type="submit" value="edit" />
+      </form>
+      <form action="/categories/<%= category.id %>/delete" method="POST">
+         <input class="btn btn--danger" type="submit" value="delete" />
+      </form>
+      <% if category.isactive == "1" %>
+      <form action="/categories/<%= category.id %>/deactivate" method="POST">
+         <input class="btn btn--danger" type="submit" value="deactivate"/>
+      </form>
+      <% else %>
+      <form action="/categories/<%= category.id %>/reactivate" method="POST">
+         <input class="btn btn--danger" type="submit" value="reactivate"/>
+      </form>
+      <% end %>
+   </li>
+   <% end %>
 </ul>
 <button><a href="/new-category">Create a New Category?</a></button>

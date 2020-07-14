@@ -1,28 +1,30 @@
 <h1>Your Merchants!</h1>
 <ul>
-<% for merchant in @merchants %>
-    <li>
-        <p
-        <% if merchant.isactive == "1" %> 
-        class=""
-        <% else %>
-        class="grayout"
-        <% end %>
-        >Name: <%= merchant.name %></p> 
-        <form action="/merchants/<%= merchant.id %>/edit" method="POST">
-        <input class="btn btn--danger" type="submit" value="edit" />
-        </form> 
-        <form action="/merchants/<%= merchant.id %>/delete" method="POST">
-        <input class="btn btn--danger" type="submit" value="delete" />
-        </form>
-        <% if merchant.isactive == "1" %>
-        <form action="/merchants/<%= merchant.id %>/deactivate" method="POST">
-        <input class="btn btn--danger" type="submit" value="deactivate"/></form>
-        <% else %>
-        <form action="/merchants/<%= merchant.id %>/reactivate" method="POST">
-        <input class="btn btn--danger" type="submit" value="reactivate"/></form>
-        <% end %>
-    </li>
-<% end %>
+   <% for merchant in @merchants %>
+   <li>
+      <p
+         <% if merchant.isactive == "1" %> 
+         class=""
+         <% else %>
+         class="grayout"
+         <% end %>
+         >Name: <%= merchant.name %></p>
+      <form action="/merchants/<%= merchant.id %>/edit" method="POST">
+         <input class="btn btn--danger" type="submit" value="edit" />
+      </form>
+      <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+         <input class="btn btn--danger" type="submit" value="delete" />
+      </form>
+      <% if merchant.isactive == "1" %>
+      <form action="/merchants/<%= merchant.id %>/deactivate" method="POST">
+         <input class="btn btn--danger" type="submit" value="deactivate"/>
+      </form>
+      <% else %>
+      <form action="/merchants/<%= merchant.id %>/reactivate" method="POST">
+         <input class="btn btn--danger" type="submit" value="reactivate"/>
+      </form>
+      <% end %>
+   </li>
+   <% end %>
 </ul>
 <button><a href="/new-merchant">Create a New Merchant?</a></button>

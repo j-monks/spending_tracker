@@ -1,15 +1,11 @@
 <h1>Edit Category</h1>
-
 <h2>Category Details</h2>
 <hr>
-
 <form method="POST" action="/categories/<%= @category.id %>">
-  <div class="form-wrapper">
-    
-    <div class="form-el">
+   <div class="form-wrapper">
+   <div class="form-el">
       <label for="category-name">Name:</label>
       <input value="<%= @category.name %>" type="text" name="name" id="name"/>
-    </div>
-    
-  <input type='submit' value="Submit Changes">
+   </div>
+   <input type='submit' value="Submit Changes">
 </form>

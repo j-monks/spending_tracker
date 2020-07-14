@@ -1,31 +1,31 @@
-<h1>Your Transactions!</h1>  <button><a href="/new-transaction">Create New Transaction?</a></button>
-
+<h1>Your Transactions!</h1>
+<button><a href="/new-transaction">Create New Transaction?</a></button>
 <ul>
-<p>Your total amount spent: £<%= @transactions_total %></p> 
-<form action="/sort">
-<select name="sort">
-    <% if @previous_param != nil %>
-        <option name="sort" value="<%= @previous_param %>"><%= @previous_param %></option>
-    <% end %>
-    <% for attribute in @attributes %>
-        <% if attribute != @previous_param %>
+   <p>Your total amount spent: £<%= @transactions_total %></p>
+   <form action="/sort">
+      <select name="sort">
+         <% if @previous_param != nil %>
+            <option name="sort" value="<%= @previous_param %>"><%= @previous_param %></option>
+         <% end %>
+         <% for attribute in @attributes %>
+            <% if attribute != @previous_param %>
             <option name="sort" value=<%= attribute %>><%= attribute %></option>
-        <% end %>
-    <% end %>
-</select>
-<input type="submit" value="sort" />
-<%= params.inspect %>
-</form>
-<% for transaction in @transactions %>
-    <li>
-        <p><%= transaction.merchant.name %>  <%= transaction.category.name %>  <%= transaction.amount %></p>
-        <form action="/<%= transaction.id %>/edit" method="POST">
-        <input class="btn btn--danger" type="submit" value="edit" />
-        </form> 
-        <form action="/<%= transaction.id %>/delete" method="POST">
-        <input class="btn btn--danger" type="submit" value="delete" />
-        <p><%= transaction.created_at %></p>
-        </form>
-    </li>
-<% end %>
+            <% end %>
+         <% end %>
+      </select>
+      <input type="submit" value="sort" />
+      <%= params.inspect %>
+   </form>
+   <% for transaction in @transactions %>
+   <li>
+      <p><%= transaction.merchant.name %>  <%= transaction.category.name %>  <%= transaction.amount %></p>
+      <form action="/<%= transaction.id %>/edit" method="POST">
+         <input class="btn btn--danger" type="submit" value="edit" />
+      </form>
+      <form action="/<%= transaction.id %>/delete" method="POST">
+         <input class="btn btn--danger" type="submit" value="delete" />
+         <p><%= transaction.created_at %></p>
+      </form>
+   </li>
+   <% end %>
 </ul>
