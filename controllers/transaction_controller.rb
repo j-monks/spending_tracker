@@ -13,8 +13,12 @@ end
 get "/sort" do
     if params[:sort] == "amount"
     @transactions = Transaction.all_order_by_amount()
-    else 
+    elsif params[:sort] == "ts"
     @transactions = Transaction.all_order_by_ts()
+    elsif params[:sort] == "merchant_id"
+    @transactions = Transaction.all_order_by_merchant()
+    elsif params[:sort] == "category_id"
+    @transactions = Transaction.all_order_by_category()
     end 
     @transactions_total = Transaction.total()
     erb(:index)
@@ -44,6 +48,7 @@ post "/:id/edit" do
 end
 
 post "/sort" do
+    
 end
 
   

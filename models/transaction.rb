@@ -53,6 +53,20 @@ class Transaction
         return results.map { |transaction| Transaction.new(transaction) }
     end
 
+    def self.all_order_by_merchant()
+        sql = "SELECT * FROM transactions
+        ORDER BY merchant_id"
+        results = SqlRunner.run(sql)
+        return results.map { |transaction| Transaction.new(transaction) }
+    end
+
+    def self.all_order_by_category()
+        sql = "SELECT * FROM transactions
+        ORDER BY category_id"
+        results = SqlRunner.run(sql)
+        return results.map { |transaction| Transaction.new(transaction) }
+    end
+
     def self.find(id)
         sql = "SELECT * FROM transactions
         WHERE id = $1"
