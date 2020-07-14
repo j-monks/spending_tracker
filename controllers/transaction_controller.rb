@@ -11,13 +11,15 @@ get "/new-transaction" do
 end
 
 get "/sort" do
-    if params[:sort] == "amount"
+    @attributes = ["Amount", "Date", "Merchant", "Category"]
+    @previous_param = params[:sort]
+    if params[:sort] == "Date"
+    @transactions = Transaction.all_order_by_created_at()
+    elsif params[:sort] == "Amount"
     @transactions = Transaction.all_order_by_amount()
-    elsif params[:sort] == "created_at"
-    @transactions = Transaction.all_order_by_ts()
-    elsif params[:sort] == "merchant_id"
+    elsif params[:sort] == "Merchant"
     @transactions = Transaction.all_order_by_merchant()
-    elsif params[:sort] == "category_id"
+    elsif params[:sort] == "Category"
     @transactions = Transaction.all_order_by_category()
     end 
     @transactions_total = Transaction.total()

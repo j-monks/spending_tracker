@@ -9,6 +9,7 @@ require_relative("controllers/transaction_controller")
 also_reload("../models/*")
 
 get "/" do
+  @attributes = ["Amount", "Date", "Merchant", "Category"]
   @transactions = Transaction.all()
   @transactions_total = Transaction.total()
   erb(:index)

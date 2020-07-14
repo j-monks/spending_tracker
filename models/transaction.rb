@@ -3,7 +3,7 @@ require("pry-byebug")
 
 class Transaction
     
-    attr_accessor :merchant_id, :category_id, :amount, :ts
+    attr_accessor :merchant_id, :category_id, :amount, :created_at
     attr_reader :id
 
     def initialize(options)
@@ -46,9 +46,9 @@ class Transaction
         return results.map { |transaction| Transaction.new(transaction) }
     end
 
-    def self.all_order_by_ts()
+    def self.all_order_by_created_at()
         sql = "SELECT * FROM transactions
-        ORDER BY ts DESC"
+        ORDER BY created_at DESC"
         results = SqlRunner.run(sql)
         return results.map { |transaction| Transaction.new(transaction) }
     end

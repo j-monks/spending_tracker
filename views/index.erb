@@ -4,10 +4,14 @@
 <p>Your total amount spent: £<%= @transactions_total %></p> 
 <form action="/sort">
 <select name="sort">
-    <option name="sort" value="created_at">Date created</option>
-    <option name="sort" value="amount">Amount</option>
-    <option name="sort" value="merchant_id">Merchant</option>
-    <option name="sort" value="category_id">Category</option>
+    <% if @previous_param != nil %>
+        <option name="sort" value="<%= @previous_param %>"><%= @previous_param %></option>
+    <% end %>
+    <% for attribute in @attributes %>
+        <% if attribute != @previous_param %>
+            <option name="sort" value=<%= attribute %>><%= attribute %></option>
+        <% end %>
+    <% end %>
 </select>
 <input type="submit" value="sort" />
 <%= params.inspect %>
@@ -20,7 +24,7 @@
         </form> 
         <form action="/<%= transaction.id %>/delete" method="POST">
         <input class="btn btn--danger" type="submit" value="delete" />
-        <p><%= transaction.ts %></p>
+        <p><%= transaction.created_at %></p>
         </form>
     </li>
 <% end %>
