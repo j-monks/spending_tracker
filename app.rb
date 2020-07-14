@@ -9,7 +9,7 @@ require_relative("controllers/transaction_controller")
 also_reload("../models/*")
 
 get "/" do
-  @transactions = Transaction.all()  
+  @transactions = Transaction.all()
   @transactions_total = Transaction.total()
   erb(:index)
 end
@@ -18,3 +18,4 @@ post "/" do
     Transaction.new(params).save()
     redirect to "/"
 end
+

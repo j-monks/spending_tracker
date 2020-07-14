@@ -1,4 +1,5 @@
 require_relative("../db/sql_runner")
+require("pry-byebug")
 
 class Transaction
     
@@ -9,7 +10,7 @@ class Transaction
         @id = options["id"].to_i if options["id"]
         @merchant_id = options["merchant_id"].to_i
         @category_id = options["category_id"].to_i
-        @amount = options["amount"].to_f
+        @amount = options['amount'].to_f
         @ts = options["ts"]
     end
 
@@ -33,8 +34,21 @@ class Transaction
     end
 
     def self.all()
+        sql = "SELECT * FROM transactions"
+        results = SqlRunner.run(sql)
+        return results.map { |transaction| Transaction.new(transaction) }
+    end
+
+    def self.all_order_by_amount()
         sql = "SELECT * FROM transactions
-        ORDER BY ts DESC" 
+        ORDER BY amount"
+        results = SqlRunner.run(sql)
+        return results.map { |transaction| Transaction.new(transaction) }
+    end
+
+    def self.all_order_by_ts()
+        sql = "SELECT * FROM transactions
+        ORDER BY ts DESC"
         results = SqlRunner.run(sql)
         return results.map { |transaction| Transaction.new(transaction) }
     end
@@ -101,3 +115,5 @@ class Transaction
     end
 
 end
+
+

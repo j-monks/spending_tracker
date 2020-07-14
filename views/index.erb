@@ -1,7 +1,15 @@
 <h1>Your Transactions!</h1>  <button><a href="/new-transaction">Create New Transaction?</a></button>
 
 <ul>
-<p>Your total amount spent: £<%= @transactions_total %></p>
+<p>Your total amount spent: £<%= @transactions_total %></p> 
+<form action="/sort">
+<select name="sort">
+    <option name="sort" value="ts">Date created</option>
+    <option name="sort" value="amount">Amount</option>
+</select>
+<input type="submit" value="sort" />
+<%= params.inspect %>
+</form>
 <% for transaction in @transactions %>
     <li>
         <p><%= transaction.merchant.name %>  <%= transaction.category.name %>  <%= transaction.amount %></p>

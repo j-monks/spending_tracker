@@ -3,10 +3,21 @@ require("sinatra/contrib/all")
 require_relative("../models/transaction")
 also_reload("../models/*")
 
+
 get "/new-transaction" do 
     @merchants = Merchant.all()
     @categories = Category.all()
     erb(:"transactions/new")
+end
+
+get "/sort" do
+    if params[:sort] == "amount"
+    @transactions = Transaction.all_order_by_amount()
+    else 
+    @transactions = Transaction.all_order_by_ts()
+    end 
+    @transactions_total = Transaction.total()
+    erb(:index)
 end
 
 post "/:id" do 
@@ -30,6 +41,9 @@ post "/:id/edit" do
     @previous_merchant = Merchant.find(@transaction.merchant_id)
     @previous_category = Category.find(@transaction.category_id)
     erb(:"/transactions/edit")
+end
+
+post "/sort" do
 end
 
   
