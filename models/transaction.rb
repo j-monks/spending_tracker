@@ -11,7 +11,7 @@ class Transaction
         @merchant_id = options["merchant_id"].to_i
         @category_id = options["category_id"].to_i
         @amount = options['amount'].to_f
-        @ts = options["ts"]
+        @created_at = options["created_at"]
     end
 
     def save()
@@ -20,7 +20,7 @@ class Transaction
             merchant_id,
             category_id,
             amount,
-            ts
+            created_at
         )
         VALUES
         (
@@ -28,7 +28,7 @@ class Transaction
         )
         RETURNING id"
         ts = Time.now.strftime("%Y-%m-%d %H:%M:%S")
-        values = [@merchant_id, @category_id, @amount, @ts = ts]
+        values = [@merchant_id, @category_id, @amount, @created_at = ts]
         result = SqlRunner.run(sql, values)
         @id = result.first()["id"].to_i
     end

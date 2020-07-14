@@ -13,7 +13,7 @@ end
 get "/sort" do
     if params[:sort] == "amount"
     @transactions = Transaction.all_order_by_amount()
-    elsif params[:sort] == "ts"
+    elsif params[:sort] == "created_at"
     @transactions = Transaction.all_order_by_ts()
     elsif params[:sort] == "merchant_id"
     @transactions = Transaction.all_order_by_merchant()
