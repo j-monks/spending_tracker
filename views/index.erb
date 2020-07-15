@@ -29,3 +29,26 @@
    </li>
    <% end %>
 </ul>
+
+<table>
+   <thead>
+  <tr>
+    <th>Merchant</th>
+    <th>Category</th>
+    <th>Amount</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tr>
+    <td><%= transaction.merchant.name %></td>
+    <td><%= transaction.category.name %></td>
+    <td>£<%= sprintf("%.2f", transaction.amount) %></td>
+    <td><%= transaction.created_at %></td>
+  </tr>
+</table>
+<form action="/<%= transaction.id %>/edit" method="POST">
+   <input class="btn btn--danger" type="submit" value="edit" />
+</form>
+<form action="/<%= transaction.id %>/delete" method="POST">
+   <input class="btn btn--danger" type="submit" value="delete" />
+</form>
