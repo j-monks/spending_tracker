@@ -17,38 +17,63 @@
       <%= params.inspect %>
    </form>
    <% for transaction in @transactions %>
-   <li>
-      <p><%= transaction.merchant.name %>  <%= transaction.category.name %>  £<%= sprintf("%.2f", transaction.amount) %></p> 
-      <form action="/<%= transaction.id %>/edit" method="POST">
-         <input class="btn btn--danger" type="submit" value="edit" />
-      </form>
-      <form action="/<%= transaction.id %>/delete" method="POST">
-         <input class="btn btn--danger" type="submit" value="delete" />
-         <p><%= transaction.created_at %></p>
-      </form>
-   </li>
-   <% end %>
-</ul>
-
-<table>
+      <table class="content-table">
    <thead>
-  <tr>
-    <th>Merchant</th>
-    <th>Category</th>
-    <th>Amount</th>
-    <th>Date</th>
-  </tr>
-  </thead>
-  <tr>
-    <td><%= transaction.merchant.name %></td>
-    <td><%= transaction.category.name %></td>
-    <td>£<%= sprintf("%.2f", transaction.amount) %></td>
-    <td><%= transaction.created_at %></td>
-  </tr>
+      <tr>
+         <th>Merchant</th>
+         <th>Category</th>
+         <th>Amount</th>
+         <th>Date</th>
+         <th></th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><%= transaction.merchant.name %></td>
+         <td><%= transaction.category.name %></td>
+         <td>£<%= sprintf("%.2f", transaction.amount) %></td>
+         <td><%= transaction.created_at %></td>
+         <td><form action="/<%= transaction.id %>/edit" method="POST">
+               <input class="btn btn--danger" type="submit" value="edit" />
+            </form>
+         </td>
+         <td><form action="/<%= transaction.id %>/delete" method="POST">
+               <input class="btn btn--danger" type="submit" value="delete" />
+            </form>
+         </td>
+      </tr>
+   </tbody>
 </table>
-<form action="/<%= transaction.id %>/edit" method="POST">
-   <input class="btn btn--danger" type="submit" value="edit" />
-</form>
-<form action="/<%= transaction.id %>/delete" method="POST">
-   <input class="btn btn--danger" type="submit" value="delete" />
-</form>
+   <% end %>
+
+
+<table class="content-table">
+   <thead>
+      <tr>
+         <th>Merchant</th>
+         <th>Category</th>
+         <th>Amount</th>
+         <th>Date</th>
+         <th></th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><%= transaction.merchant.name %></td>
+         <td><%= transaction.category.name %></td>
+         <td>£<%= sprintf("%.2f", transaction.amount) %></td>
+         <td><%= transaction.created_at %></td>
+         <td><form action="/<%= transaction.id %>/edit" method="POST">
+               <input class="btn btn--danger" type="submit" value="edit" />
+            </form>
+         </td>
+         <td><form action="/<%= transaction.id %>/delete" method="POST">
+               <input class="btn btn--danger" type="submit" value="delete" />
+            </form>
+         </td>
+      </tr>
+   </tbody>
+</table>
+

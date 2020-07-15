@@ -5,6 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Document</title>
       <link rel="stylesheet" type="text/css" href="/styles/forms.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <style>
          * {
            box-sizing: border-box;
@@ -54,6 +55,64 @@
             padding: 10px;
             color: #555;
          }
+
+         .content-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            border-radius: 5px 5px 0 0;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+         }
+
+         .content-table thead tr {
+            background-color: #222c6a;
+            color: #fff;
+            text-align: left;
+            font-weight: bold;
+         }
+
+         .content-table th,
+         .content-table td {
+            padding: 12px 15px;
+         }
+
+         .content-table tbody tr {
+            border-bottom: 1px solid #ddd;
+         }
+
+         .content-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+         }
+
+         .content-table tbody tr:last-of-type {
+            border-bottom: 2px solid #222c6a;
+         }
+
+         .content-table tbody tr:hover {
+            font-weight: bold;
+            color: #009879;
+         }
+
+         .dropdown {
+            position: relative;
+            display: inline-block;
+         }
+
+         .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            padding: 12px 16px;
+            z-index: 1;
+         }  
+
+         .dropdown:hover .dropdown-content {
+            display: block;
+         }
       </style>
    </head>
    <body>
@@ -70,5 +129,6 @@
       <main>
       <%= yield %>
       </main>
+      <i class="fa fa-cloud"></i>
    </body>
 </html>
