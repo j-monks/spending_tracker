@@ -1,30 +1,47 @@
 <h1>Your Merchants!</h1>
-<ul>
-   <% for merchant in @merchants %>
-   <li>
-      <p
-         <% if merchant.isactive == "1" %> 
-         class=""
-         <% else %>      
-         class="grayout"
+<div class="new-merch-container">
+<a href="/new-merchant" class="button-1">Create a New Merchant?</a>
+</div>
+
+<% for merchant in @merchants %>
+      <table class="content-table">
+         <thead>
+             <tr>
+         <th>Name</th>
+         <th></th>
+         <th></th>
+         <th></th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td class=<%= merchant.isactive == "1" ? "" : "grayout" %>>
+         <%= merchant.name %>
+         </td>
+         <td>
+            <form action="/merchants/<%= merchant.id %>/edit" method="POST">
+               <button class="button-2" type="submit">edit</Button>
+            </form>
+         </td>
+         <td>
+            <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+               <button class="button-2" type="submit">delete</Button>
+            </form>
+         </td>
+         <% if merchant.isactive == "1" %>
+         <td>
+            <form action="/merchants/<%= merchant.id %>/deactivate" method="POST">
+               <button class="button-2" type="submit">deactivate</button>
+            </form>
+         </td>
+         <% else %>
+         <td>
+            <form action="/merchants/<%= merchant.id %>/reactivate" method="POST">
+               <button class="button-2" type="submit">reactivate</button>
+            </form>
+         </td>
          <% end %>
-         >Name: <%= merchant.name %></p>
-      <form action="/merchants/<%= merchant.id %>/edit" method="POST">
-         <input class="btn btn--danger" type="submit" value="edit" />
-      </form>
-      <form action="/merchants/<%= merchant.id %>/delete" method="POST">
-         <input class="btn btn--danger" type="submit" value="delete" />
-      </form>
-      <% if merchant.isactive == "1" %>
-      <form action="/merchants/<%= merchant.id %>/deactivate" method="POST">
-         <input class="btn btn--danger" type="submit" value="deactivate"/>
-      </form>
-      <% else %>
-      <form action="/merchants/<%= merchant.id %>/reactivate" method="POST">
-         <input class="btn btn--danger" type="submit" value="reactivate"/>
-      </form>
-      <% end %>
-   </li>
+      </tr>
+   </tbody>
+</table>
    <% end %>
-</ul>
-<button><a href="/new-merchant">Create a New Merchant?</a></button>
