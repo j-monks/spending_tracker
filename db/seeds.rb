@@ -1,7 +1,6 @@
 require_relative("../models/merchant")
 require_relative("../models/category")
 require_relative("../models/transaction")
-require_relative("../models/user")
 require("pry-byebug")
 
 Transaction.delete_all()
@@ -66,16 +65,6 @@ transaction3 = Transaction.new({
 })
 transaction3.save()
 
-
-user1 = User.new({
-    "budget" => 0.00
-})
-user1.save()
-
-user1.budget = 2.43
-user1.update()
-# transaction1.amount = 2.43
-# transaction1.update()
 
 
 # p sprintf("%.2f", @user1.budget)

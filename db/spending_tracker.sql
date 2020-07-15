@@ -19,12 +19,6 @@ CREATE TABLE categories
     isactive INT
 );
 
-CREATE TABLE users
-(
-    id SERIAL primary key,
-    budget NUMERIC(6, 2)
-);
-
 CREATE TABLE transactions
 (
     id SERIAL primary key,
