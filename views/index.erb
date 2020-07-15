@@ -3,7 +3,7 @@
 <ul>
    <p>Your total amount spent: £<%= @transactions_total %></p>
    <form action="/sort">
-      <select name="sort">
+      <select class="select" name="sort">
          <% if @previous_param != nil %>
             <option name="sort" value="<%= @previous_param %>"><%= @previous_param %></option>
          <% end %>
