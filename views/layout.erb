@@ -142,6 +142,42 @@
             background: #fff;
          }
 
+         .button {
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+            background: #222c6a;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 12px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.25s;
+         }
+
+         .button::after {
+            content: '';
+            display: block;
+            height: 6px;
+            width: 0%;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            left: 0;
+            bottom: 0;
+            transition: width 0.15s ease-in-out;
+         }
+
+         .button:hover::after {
+            width: 100%;
+         }
+
+         .button:active {
+            background: #141B45;
+         }
       </style>
    </head>
    <body>
