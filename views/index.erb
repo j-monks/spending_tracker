@@ -11,7 +11,7 @@
          <% end %>
          <% for attribute in @attributes %>
             <% if attribute != @previous_param %>
-                <option name="sort" value=<%= attribute %>><%= attribute %></option>
+                <option name="sort" value="<%= attribute %>"><%= attribute %></option>
             <% end %>
          <% end %>
       </select>

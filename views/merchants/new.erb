@@ -1,11 +1,21 @@
 <h1>Create New Merchant</h1>
-<h2>Merchant Details</h2>
-<hr>
+<hr />
 <form method="POST" action="/merchants">
-   <div class="form-wrapper">
-   <div class="form-el">
-      <label for="merchant-name">Name:</label>
-      <input type="text" name="name" id="name"/>
-   </div>
-   <input type='submit' value="Create">
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Merchant Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                   <label for="merchant-name">Name:</label>
+                        <input type="text" name="name" id="name"/>
+                        <button class="button-2" type="submit">create</button>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>

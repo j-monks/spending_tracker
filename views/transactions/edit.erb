@@ -1,33 +1,44 @@
 <h1>Edit Transaction</h1>
-<h2>Transaction Details</h2>
-<hr>
+<hr />
 <form method="POST" action="/<%= @transaction.id %>">
-   <div class="form-wrapper">
-   <label for="transaction-merchant">
-      Select a Merchant:
-      <select name="merchant_id">
-         <option value="<%= @previous_merchant.id %>"><%= @previous_merchant.name %></option>
-         <% for merchant in @merchants %>
-            <% if merchant.name != @previous_merchant.name %>
-               <option value="<%= merchant.id %>"><%= merchant.name %></option>
-            <% end %>
-         <% end %>
-      </select>
-   </label>
-   <label for="transaction-category">
-      Select a Category:
-      <select name="category_id">
-         <option value="<%= @previous_category.id %>"><%= @previous_category.name %></option>
-         <% for category in @categories %>
-            <% if category.name != @previous_category.name %>
-               <option value="<%= category.id %>"><%= category.name %></option>
-            <% end %>
-         <% end %>
-      </select>
-   </label>
-   <div class="form-el">
-      <label for="transaction-amount">Amount:</label>
-      <input type="number" value="<%= @transaction.amount %>" step="0.01" name="amount" id="amount"/>
-   </div>
-   <input type='submit' value="Submit Changes">
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Transaction Details</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="transaction-merchant">
+                        Select a Merchant:
+                        <select name="merchant_id">
+                            <option value="<%= @previous_merchant.id %>"><%= @previous_merchant.name %></option>
+                            <% for merchant in @merchants %> <% if merchant.name != @previous_merchant.name %>
+                            <option value="<%= merchant.id %>"><%= merchant.name %></option>
+                            <% end %> <% end %>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <label for="transaction-category">
+                        Select a Category:
+                        <select name="category_id">
+                            <option value="<%= @previous_category.id %>"><%= @previous_category.name %></option>
+                            <% for category in @categories %> <% if category.name != @previous_category.name %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                            <% end %> <% end %>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <label for="transaction-amount">Amount:</label>
+                    <input type="number" value="<%= @transaction.amount %>" step="0.01" name="amount" id="amount" />
+                    <button class="button-2" type="submit">submit changes</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>

@@ -1,35 +1,46 @@
 <h1>Create New Transaction</h1>
-<h2>Transaction Details</h2>
-<hr>
+<hr />
 <form method="POST" action="/">
-   <div class="form-wrapper">
-   <label for="transaction-merchant">
-      Select a Merchant:
-      <select name="merchant_id">
-         <% for merchant in @merchants %>
-            <% if merchant.isactive == "1" %>
-                <option value="<%= merchant.id %>"><%= merchant.name %></option>
-            <% else %>
-                <option value="<%= merchant.id %>" disabled><%= merchant.name %></option>
-            <% end %>
-        <% end %>
-      </select>
-   </label>
-   <label for="transaction-category">
-      Select a Category:
-      <select name="category_id">
-         <% for category in @categories %>
-            <% if category.isactive == "1" %>
-                <option value="<%= category.id %>"><%= category.name %></option>
-            <% else %>
-                <option value="<%= category.id %>" disabled><%= category.name %></option>
-            <% end %>
-         <% end %>
-      </select>
-   </label>
-   <div class="form-el">
-      <label for="transaction-amount">Amount:</label>
-      <input type="number" step="0.01" name="amount" id="amount"/>
-   </div>
-   <input type='submit' value="Create">
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Transaction Details</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <label for="transaction-merchant">
+                        Select a Merchant:
+                        <select name="merchant_id">
+                            <% for merchant in @merchants %> <% if merchant.isactive == "1" %>
+                            <option value="<%= merchant.id %>"><%= merchant.name %></option>
+                            <% else %>
+                            <option value="<%= merchant.id %>" disabled><%= merchant.name %></option>
+                            <% end %> <% end %>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <label for="transaction-category">
+                        Select a Category:
+                        <select name="category_id">
+                            <% for category in @categories %> <% if category.isactive == "1" %>
+                            <option value="<%= category.id %>"><%= category.name %></option>
+                            <% else %>
+                            <option value="<%= category.id %>" disabled><%= category.name %></option>
+                            <% end %> <% end %>
+                        </select>
+                    </label>
+                </td>
+                <td>
+                    <label for="transaction-amount">Amount:</label>
+                    <input type="number" step="0.01" name="amount" id="amount" />
+                    <button class="button-2" type="submit">submit</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>

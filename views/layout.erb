@@ -81,8 +81,8 @@
 
          .merchant-table{
             margin-left: 100px;
-         }
-
+         }  
+                  
          .content-table {
             border-collapse: collapse;
             margin: 15px 0;
@@ -245,21 +245,21 @@
          .button-2:active {
             background: #141B45;
          }
+
+         .new-tx-container.category {
+            margin-bottom: 40px;
+         }
       </style>
    </head>
    <body>
       <nav>
          <img src="https://image.flaticon.com/icons/png/512/21/21138.png" alt="british-pound-magnifying-glass-logo">
-         
-               <a href="/">Transactions</a>
-           
-               <a href="/merchants">Merchants</a>
-            
-               <a href="/categories">Categories</a>
-            
+         <a href="/">Transactions</a>
+         <a href="/merchants">Merchants</a>
+         <a href="/categories">Categories</a>
       </nav>
       <main>
-      <%= yield %>
+         <%= yield %>
       </main>
    </body>
 </html>

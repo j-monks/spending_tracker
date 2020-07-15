@@ -1,11 +1,21 @@
 <h1>Create New Category</h1>
-<h2>Category Details</h2>
-<hr>
+<hr />
 <form method="POST" action="/categories">
-   <div class="form-wrapper">
-   <div class="form-el">
-      <label for="category-name">Name:</label>
-      <input type="text" name="name" id="name"/>
-   </div>
-   <input type='submit' value="Create">
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Category Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                     <label for="category-name">Tag:</label>
+                        <input type="text" name="name" id="name"/>
+                        <button class="button-2" type="submit">create</button>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>

@@ -1,11 +1,21 @@
 <h1>Edit Merchant</h1>
-<h2>Merchant Details</h2>
-<hr>
+<hr />
 <form method="POST" action="/merchants/<%= @merchant.id %>">
-   <div class="form-wrapper">
-   <div class="form-el">
-      <label for="merchant-name">Name:</label>
-      <input value="<%= @merchant.name %>" type="text" name="name" id="name"/>
-   </div>
-   <input type='submit' value="Submit Changes">
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Merchant Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                   <label for="merchant-name">Name:</label>
+                        <input value="<%= @merchant.name %>" type="text" name="name" id="name"/>
+                        <button class="button-2" type="submit">submit changes</button>
+                    </label>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 </form>

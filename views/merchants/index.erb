@@ -1,12 +1,12 @@
-<h1>Your Merchants!</h1>
-<div class="new-merch-container">
-<a href="/new-merchant" class="button-1">Create a New Merchant?</a>
+<h1 class="heading-main">Your Merchants!</h1>
+<div class="new-tx-container category">
+   <a href="/new-merchant" class="button-1">Create a New Merchant?</a>
 </div>
-
+<ul>
 <% for merchant in @merchants %>
-      <table class="content-table">
-         <thead>
-             <tr>
+<table class="content-table">
+   <thead>
+      <tr>
          <th>Name</th>
          <th></th>
          <th></th>
@@ -16,7 +16,7 @@
    <tbody>
       <tr>
          <td class=<%= merchant.isactive == "1" ? "" : "grayout" %>>
-         <%= merchant.name %>
+            <%= merchant.name %>
          </td>
          <td>
             <form action="/merchants/<%= merchant.id %>/edit" method="POST">
@@ -41,7 +41,7 @@
             </form>
          </td>
          <% end %>
+         <% end %>
       </tr>
    </tbody>
 </table>
-   <% end %>
