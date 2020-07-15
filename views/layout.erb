@@ -12,8 +12,12 @@
          }
          body {
             margin: 0;
-         } 
+         }
          
+         a {
+            text-decoration: none;
+         }
+
          nav {
             position: fixed;
             top: 0;
@@ -26,6 +30,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+         }
+         .new-tx-container {
+            margin-left: 35px;
          }
 
          nav img {
@@ -55,9 +62,22 @@
             color: #555;
          }
 
+         .heading-main {
+            margin-left: 35px;
+         }
+
+         .heading-total {
+            display: inline-block;
+            margin-bottom: 10px;
+         }
+
+         .form-sort {
+            margin-top: 30px;
+         }
+
          .content-table {
             border-collapse: collapse;
-            margin: 25px 0;
+            margin: 15px 0;
             font-size: 0.9em;
             min-width: 400px;
             border-radius: 5px 5px 0 0;
@@ -97,6 +117,7 @@
          .dropdown {
             position: relative;
             display: inline-block;
+            margin-top: 10px;
          }
 
          .dropdown-content {
@@ -114,6 +135,7 @@
          }
          
          .select {
+            margin-left: 208px;
             padding: 8px 12px;
             color: #333;
             background-color: #eee;
@@ -142,7 +164,7 @@
             background: #fff;
          }
 
-         .button {
+         .button-1 {
             border: none;
             border-radius: 5px;
             margin-left: 5px;
@@ -158,8 +180,8 @@
             position: relative;
             transition: background 0.25s;
          }
-
-         .button::after {
+  
+         .button-1::after {
             content: '';
             display: block;
             height: 6px;
@@ -171,11 +193,48 @@
             transition: width 0.15s ease-in-out;
          }
 
-         .button:hover::after {
+         .button-1:hover::after {
             width: 100%;
          }
 
-         .button:active {
+         .button-1:active {
+            background: #141B45;
+         }
+
+         .button-2 {
+            border: none;
+            border-radius: 5px;
+            margin-left: 5px;
+            background: #222c6a;
+            padding: 10px 20px;
+            color: #fff;
+            font-size: 8px;
+            font-weight: bold;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            position: relative;
+            transition: background 0.25s;
+         }
+
+         .button-2::after {
+            content: '';
+            display: block;
+            height: 6px;
+            width: 0%;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            left: 0;
+            bottom: 0;
+            transition: width 0.15s ease-in-out;
+         }
+
+         .button-2:hover::after {
+            width: 100%;
+         }
+
+         .button-2:active {
             background: #141B45;
          }
       </style>

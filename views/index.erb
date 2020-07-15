@@ -1,8 +1,10 @@
-<h1>Your Transactions!</h1>
-<button><a href="/new-transaction">Create New Transaction?</a></button>
+<h1 class="heading-main">Your Transactions!</h1>
+<div class="new-tx-container">
+<a href="/new-transaction" class="button-1">Create New Transaction?</a>
+</div>
 <ul>
-   <p>Your total amount spent: £<%= @transactions_total %></p>
-   <form action="/sort">
+   <form class="form-sort" action="/sort">
+      <h4 class="heading-total">Your total amount spent: £<%= @transactions_total %></h4>
       <select class="select" name="sort">
          <% if @previous_param != nil %>
             <option name="sort" value="<%= @previous_param %>"><%= @previous_param %></option>
@@ -13,10 +15,7 @@
             <% end %>
          <% end %>
       </select>
-      <button class="button" type="submit">Sort</Button>
-
-      
-      <%= params.inspect %>
+      <button class="button-1" type="submit">Sort</Button>
    </form>
    <% for transaction in @transactions %>
       <table class="content-table">
@@ -37,45 +36,14 @@
          <td>£<%= sprintf("%.2f", transaction.amount) %></td>
          <td><%= transaction.created_at %></td>
          <td><form action="/<%= transaction.id %>/edit" method="POST">
-               <input class="btn btn--danger" type="submit" value="edit" />
+               <button class="button-2" type="submit">edit</Button>
             </form>
          </td>
          <td><form action="/<%= transaction.id %>/delete" method="POST">
-               <input class="btn btn--danger" type="submit" value="delete" />
+               <button class="button-2" type="submit">delete</Button>
             </form>
          </td>
       </tr>
    </tbody>
 </table>
    <% end %>
-
-
-<table class="content-table">
-   <thead>
-      <tr>
-         <th>Merchant</th>
-         <th>Category</th>
-         <th>Amount</th>
-         <th>Date</th>
-         <th></th>
-         <th></th>
-      </tr>
-   </thead>
-   <tbody>
-      <tr>
-         <td><%= transaction.merchant.name %></td>
-         <td><%= transaction.category.name %></td>
-         <td>£<%= sprintf("%.2f", transaction.amount) %></td>
-         <td><%= transaction.created_at %></td>
-         <td><form action="/<%= transaction.id %>/edit" method="POST">
-               <input class="btn btn--danger" type="submit" value="edit" />
-            </form>
-         </td>
-         <td><form action="/<%= transaction.id %>/delete" method="POST">
-               <input class="btn btn--danger" type="submit" value="delete" />
-            </form>
-         </td>
-      </tr>
-   </tbody>
-</table>
-
