@@ -1,4 +1,5 @@
 <h1>Your Transactions!</h1>
+<h3>Your budget: </h3>
 <button><a href="/new-transaction">Create New Transaction?</a></button>
 <ul>
    <p>Your total amount spent: £<%= @transactions_total %></p>
@@ -9,7 +10,7 @@
          <% end %>
          <% for attribute in @attributes %>
             <% if attribute != @previous_param %>
-            <option name="sort" value=<%= attribute %>><%= attribute %></option>
+                <option name="sort" value=<%= attribute %>><%= attribute %></option>
             <% end %>
          <% end %>
       </select>
@@ -18,7 +19,7 @@
    </form>
    <% for transaction in @transactions %>
    <li>
-      <p><%= transaction.merchant.name %>  <%= transaction.category.name %>  <%= transaction.amount %></p>
+      <p><%= transaction.merchant.name %>  <%= transaction.category.name %>  £<%= sprintf("%.2f", transaction.amount) %></p> 
       <form action="/<%= transaction.id %>/edit" method="POST">
          <input class="btn btn--danger" type="submit" value="edit" />
       </form>

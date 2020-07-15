@@ -1,6 +1,7 @@
 DROP TABLE transactions;
 DROP TABLE merchants;
 DROP TABLE categories;
+DROP TABLE users;
 
 CREATE TABLE merchants
 (
@@ -18,6 +19,12 @@ CREATE TABLE categories
     isactive INT
 );
 
+CREATE TABLE users
+(
+    id SERIAL primary key,
+    budget NUMERIC(6, 2)
+);
+
 CREATE TABLE transactions
 (
     id SERIAL primary key,
@@ -26,3 +33,4 @@ CREATE TABLE transactions
     amount decimal(18,2),
     created_at TIMESTAMP
 );
+
