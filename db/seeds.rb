@@ -67,6 +67,11 @@ transaction3.save()
 
 
 
+Merchant.find(merchant1.id)
+
+
+
+
 # p sprintf("%.2f", @user1.budget)
 
 # VARIABLES

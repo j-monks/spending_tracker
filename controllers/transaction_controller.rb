@@ -11,7 +11,7 @@ get "/new-transaction" do
 end
 
 get "/sort" do
-    @attributes = ["Amount", "Date", "Merchant", "Category"]
+    @attributes = ["Date", "Amount", "Merchant", "Category"]
     @previous_param = params[:sort]
     if params[:sort] == "Date"
     @transactions = Transaction.all_order_by_created_at()
